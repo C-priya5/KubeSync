@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: backup3-cronjob
 spec:
-  schedule: "*/1 * * * *"  # Run every 60 seconds
+schedule: "0 0 * * *" #runs at midnight everyday,0  minutes (the job will run at the start of the hour) 0 hours (the job will run at the start of the day). *** denotes any day of the month,any month, any day of the week
   jobTemplate:
     spec:
       template:
