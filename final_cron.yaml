@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup3-cronjob
+spec:
+  schedule: "*/1 * * * *"  # Run every 60 seconds
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: backup-trial
+            image: pes2ug21cs137/finalproject:latest
+            imagePullPolicy: IfNotPresent
+          restartPolicy: Never  # Ensures the job doesn't automatically restart after completion
+  successfulJobsHistoryLimit: 1  # Keep only the most recent successful job
+  failedJobsHistoryLimit: 1  # Keep only the most recent failed job
